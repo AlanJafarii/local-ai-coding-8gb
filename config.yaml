@@ -1,0 +1,36 @@
+name: Local AI Coding 8GB Setup
+version: 1.0.0
+schema: v1
+
+models:
+  - name: Qwen 2.5 Coder 14B (8K Local)
+    provider: ollama
+    model: qwen-coder-8k:latest
+    roles:
+      - chat
+      - edit
+      - apply
+    defaultCompletionOptions:
+      contextLength: 8192
+      temperature: 0.2
+
+  - name: Qwen 2.5 Coder 1.5B (Fast Autocomplete)
+    provider: ollama
+    model: qwen2.5-coder:1.5b
+    roles:
+      - autocomplete
+
+  - name: Nomic Embed Text
+    provider: ollama
+    model: nomic-embed-text:latest
+    roles:
+      - embed
+
+context:
+  - provider: code
+  - provider: docs
+  - provider: diff
+  - provider: terminal
+  - provider: problems
+  - provider: folder
+  - provider: codebase
